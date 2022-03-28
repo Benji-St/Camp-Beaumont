@@ -43,8 +43,12 @@
 
         // sort the camps
         if (Array.isArray(resData)) {
+
+          let fromDate = new Date()
+          let fromDay = fromDate.getDate() - 7
+          fromDate.setDate(fromDay)
           let futureCamps = resData.filter(function(camp) {            
-            return new Date(camp.sessions[0].date) >= new Date()
+            return new Date(camp.sessions[0].date) >= fromDate
           })
 
           let sortedCamps = futureCamps.sort(function(a,b){
